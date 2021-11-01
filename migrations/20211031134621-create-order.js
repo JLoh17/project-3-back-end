@@ -11,7 +11,7 @@ module.exports = {
       userID: {
         type: Sequelize.INTEGER
       },
-      address: {
+      deliveryAddress: {
         type: Sequelize.STRING
       },
       grandTotal: {
