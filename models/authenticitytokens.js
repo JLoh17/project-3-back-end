@@ -1,24 +1,18 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+const AuthenticityTokensSchema = require('./schema/authenticity_token')
+
 module.exports = (sequelize, DataTypes) => {
   class AuthenticityTokens extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      AuthenticityToken.User = this.belongsTo(models.User)
     }
   };
-  AuthenticityTokens.init({
-    token: DataTypes.STRING,
-    userID: DataTypes.INTEGER
-  }, {
+  const { tableAttributes } = AuthenticityTokensSchema (sequelize, DataTypes)
+  AuthenticityTokens.init(tableAttributes, {
     sequelize,
     modelName: 'AuthenticityTokens',
   });
+
   return AuthenticityTokens;
 };
