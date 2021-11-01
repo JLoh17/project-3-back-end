@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     firstName: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     lastName: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     email: {
       type: DataTypes.STRING(255),
@@ -26,11 +26,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     address: {
       type: DataTypes.STRING(255),
-      allowNull: false
+      allowNull: true
     },
     telephone: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: true
     },
     isAdmin: {
       type: DataTypes.BOOLEAN,
