@@ -18,14 +18,11 @@ module.exports = {
       price: {
         type: Sequelize.FLOAT
       },
-      CategoryID: {
+      CategoryId: {
         type: Sequelize.INTEGER
       },
-      DiscountID: {
+      DiscountId: {
         type: Sequelize.INTEGER
-      },
-      image: {
-        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

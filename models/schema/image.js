@@ -1,28 +1,28 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('AuthenticityToken', {
+  return sequelize.define('Image', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    token: {
+    imageURL: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    UserId: {
+    ProductId: {
       type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
     sequelize,
-    tableName: 'AuthenticityTokens',
+    tableName: 'Images',
     schema: 'public',
     timestamps: true,
     indexes: [
       {
-        name: "AuthenticityTokens_pkey",
+        name: "Images_pkey",
         unique: true,
         fields: [
           { name: "id" },
