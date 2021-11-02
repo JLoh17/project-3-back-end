@@ -2,7 +2,9 @@
   "development": {
     "database": "project-3-backend",
     "host": "localhost",
-    "dialect": "postgres"
+    "dialect": "postgres",
+    "username": "postgres",
+    "password": "12345678"
   },
   "production": {
     "protocol": "postgres",

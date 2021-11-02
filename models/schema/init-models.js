@@ -2,6 +2,7 @@ var DataTypes = require("sequelize").DataTypes;
 var _AuthenticityToken = require("./authenticity_token");
 var _Cart = require("./cart");
 var _Category = require("./category");
+var _Image = require("./image");
 var _OrderProduct = require("./order_product");
 var _Order = require("./order");
 var _Product = require("./product");
@@ -12,6 +13,7 @@ function initModels(sequelize) {
   var AuthenticityToken = _AuthenticityToken(sequelize, DataTypes);
   var Cart = _Cart(sequelize, DataTypes);
   var Category = _Category(sequelize, DataTypes);
+  var Image = _Image(sequelize, DataTypes);
   var OrderProduct = _OrderProduct(sequelize, DataTypes);
   var Order = _Order(sequelize, DataTypes);
   var Product = _Product(sequelize, DataTypes);
@@ -23,6 +25,7 @@ function initModels(sequelize) {
     AuthenticityToken,
     Cart,
     Category,
+    Image,
     OrderProduct,
     Order,
     Product,

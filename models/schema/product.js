@@ -19,16 +19,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DOUBLE,
       allowNull: true
     },
-    categoryID: {
+    CategoryId: {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    discountID: {
+    DiscountId: {
       type: DataTypes.INTEGER,
-      allowNull: true
-    },
-    image: {
-      type: DataTypes.STRING(255),
       allowNull: true
     }
   }, {
