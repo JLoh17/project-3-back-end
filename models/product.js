@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       Product.Category = this.hasOne(models.Category)
       Product.Orders = this.belongsToMany(models.Order, {through: 'OrderProduct'})
       Product.OrderProducts = this.hasMany(models.OrderProduct)
-      Product.Users = this.belongsToMany(models.User, {though: 'Cart'})
+      Product.Users = this.belongsToMany(models.User, {through: 'Cart'})
       Product.Carts = this.hasMany(models.Cart)
       Product.Images = this.hasMany(models.Image)
     }
