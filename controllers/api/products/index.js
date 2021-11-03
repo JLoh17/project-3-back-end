@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Product, sequelize } = require('../../../models')
+const { Product } = require('../../../models')
 
 const pageProductsIndex = async function (req, res) {
   const {query} = req
@@ -21,7 +21,7 @@ const pageProductsIndex = async function (req, res) {
 
   const results = await Product.findAndCountAll({
     where: {
-      name: {
+      productName: {
         [Op.iLike]: `%${q}%`
       }
     },
