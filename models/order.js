@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   class Order extends Model {
     static associate(models) {
       Order.User = this.belongsTo(models.User)
-      Order.Products = this.hasMany(models.Product)
+      Order.Products = this.belongsToMany(models.Product, { through: 'OrderProduct' })
       Order.OrderProducts = this.hasMany(models.OrderProduct)
     }
   };

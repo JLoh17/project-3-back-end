@@ -30,7 +30,6 @@ const pageProductsIndex = async function (req, res) {
     offset,
   })
 
-
   return res.status(200).json({
     product: results.rows,
     meta: { q, page, limit, offset, totalPages: Math.ceil(results.count / limit) }
