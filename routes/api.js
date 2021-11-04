@@ -7,8 +7,8 @@ router.post('/auth/login', require('../controllers/api/auth/login'))
 router.delete('/auth/logout', require('../controllers/api/auth/logout'))
 
 // Public products
-router.get('/products'), require('../controllers/api/products') // no need to write index if already in the path
-router.get('/products/:id'), require('../controllers/api/products/show')
+router.get('/products', require('../controllers/api/products')) // no need to write index if already in the path
+// router.get('/products/:id', require('../controllers/api/products/show'))
 
 // // My orders - for payment
 // router.get('/my/orders', require('../controllers/api/my/orders'))
