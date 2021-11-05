@@ -2,15 +2,16 @@ const { Op } = require("sequelize");
 const { Product } = require('../../../models')
 
 const pageProductsIndex = async function (req, res) {
-  const {query} = req
+  const { query } = req
 
   const q = query.q || ''
   const sort = query.sort || "createdAt"
   const page = Number(query.page) || 1
   const limit = 12
   const offset = (page - 1 ) * limit
-  let order = []
+  const CategoryId = Number(query.category) || 0
 
+  let order = []
   if (sort === 'productName') {
     order.push (['productName', 'ASC'])
   } else if (sort === 'Price') {
@@ -19,12 +20,17 @@ const pageProductsIndex = async function (req, res) {
     order.push([sort, 'DESC'])
   }
 
+  let where = {
+    productName: {
+      [Op.iLike]: `%${q}%`
+    }
+  }
+  if (CategoryId > 0) {
+    where.CategoryId = CategoryId
+  }
+
   const results = await Product.findAndCountAll({
-    where: {
-      productName: {
-        [Op.iLike]: `%${q}%`
-      }
-    },
+    where,
     order,
     limit,
     offset,
