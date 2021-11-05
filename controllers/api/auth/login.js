@@ -10,20 +10,8 @@ const validation = [
   body('email')
     .notEmpty().withMessage('Email is Required')
     .isEmail().withMessage('Email must be valid'),
-    // .custom(async function(email) {
-    //   if (email) {
-    //     const user = await User.findOne({ where: { nlike: email } })
-    //     if (user) return Promise.reject()
-    //   }
-    // }).withMessage('Incorrect credentials'),
   body('passwordHash')
     .notEmpty().withMessage('Password is Required')
-    // .custom(async function(password) {
-    //   if (password) {
-    //     const user = await User.findOne({ where: { nlike: password } })
-    //     if (user) return Promise.reject()
-    //   }
-    // }).withMessage('Incorrect credentials'),
 ]
 
 const userSerializer = function(values) {
