@@ -26,6 +26,10 @@ module.exports = function(sequelize, DataTypes) {
     DiscountId: {
       type: DataTypes.INTEGER,
       allowNull: true
+    },
+    size: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,
