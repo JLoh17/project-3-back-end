@@ -28,6 +28,13 @@ const pageProductsIndex = async function (req, res) {
     order,
     limit,
     offset,
+    include: [ // use [] if on the same line
+      {
+        association: Product.Images
+      }, {
+        association: Product.Category
+      }
+    ]
   })
 
   return res.status(200).json({
