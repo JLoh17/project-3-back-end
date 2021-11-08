@@ -34,7 +34,7 @@ router.get('/api/my/profile', require('./controllers/api/my/profile/show'))
 
 
 // // Admin Orders - Jon Lee
-// router.get('/api/admin/orders', require('./controllers/api/admin/orders'))
+router.get('/api/admin/orders', require('./controllers/api/admin/orders'))
 // router.put('/api/admin/orders/:id', require('./controllers/api/admin/orders/update'))
 
 
