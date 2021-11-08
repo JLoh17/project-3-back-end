@@ -1,27 +1,43 @@
-const { Order } = require('../../../models')
+const { authenticateCurrentUserByToken } = require('../../../_helpers')
+
+const { Order } = require('../../../../models')
 
 const pageOrdersIndex = async function (req, res) {
-  const { params: { id } } = req
+  const { query } = req
+  const { locals: { currentUser } } = res
 
+  const sort = query.sort || "createdAt"
+  const page = Number(query.page) || 1
+  const limit = 10
+  const offset = (page - 1 ) * limit
+
+  let order = []
+  if (sort === 'status') {
+    order.push (['status', 'DESC'])
+  } else {
+    order.push([sort, 'DESC'])
+  }
 
   const orderNewIndex = await Order.findAndCountAll({
     where: {
-      id: Number(id) || 0 ,
+      UserId: currentUser.id
     },
+    order,
+    limit,
+    offset,
     include: [ // use [] if on the same line
       {
         association: Order.Products
-      }, {
-        association: Order.OrderProducts
       }
     ]
   })
 
-  if (!orderNewIndex) {
-      return res.status(404).json({ message: `Order ID ${id} not found!` })
-  }
-
-  res.status(200).json({ order: orderNewIndex })
+  res.status(200).json({
+    order: orderNewIndex.rows,
+    meta: { page, limit, offset, totalPages: Math.ceil(orderNewIndex.count / limit) }
+  })
 }
 
-module.exports = [pageOrdersIndex]
+module.exports = [
+  authenticateCurrentUserByToken,
+  pageOrdersIndex]
