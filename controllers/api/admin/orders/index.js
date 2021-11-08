@@ -1,10 +1,14 @@
 const { authenticateCurrentUserByToken } = require('../../../_helpers')
 
-const { Order } = require('../../../../models')
+const { Order, User } = require('../../../../models')
 
 const pageOrdersIndex = async function (req, res) {
   const { query } = req
   const { locals: { currentUser } } = res
+
+  if (!currentUser.isAdmin) {
+    return res.json("Unauthorized access")
+  }
 
   const sort = query.sort || "createdAt"
   const page = Number(query.page) || 1
@@ -18,10 +22,7 @@ const pageOrdersIndex = async function (req, res) {
     order.push([sort, 'DESC'])
   }
 
-  const orderAdminIndex = await Order.findAll({
-    where: {
-      UserID: currentUser.id
-    },
+  const orderAdminIndex = await Order.findAndCountAll({ // Count all is required for pagination
     order,
     limit,
     offset,
@@ -33,7 +34,7 @@ const pageOrdersIndex = async function (req, res) {
   })
 
   res.status(200).json({
-    order: orderAdminIndex.rows,
+    orders: orderAdminIndex.rows,
     meta: { page, limit, offset, totalPages: Math.ceil(orderAdminIndex.count / limit) }
   })
 }
