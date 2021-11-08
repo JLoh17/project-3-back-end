@@ -21,7 +21,6 @@ const pageOrdersIndex = async function (req, res) {
   const orderAdminIndex = await Order.findAll({
     where: {
       UserID: currentUser.id
-      // UserId: currentUser.id
     },
     order,
     limit,
