@@ -19,7 +19,7 @@ const validation = [
 ]
 
 
-const apiCreateNewOrder = async function(req, res) {
+const apiCreateNewOrderProduct = async function(req, res) {
   const { locals: { currentUser } } = res
   const { body: productParams } = req
 
@@ -29,7 +29,7 @@ const apiCreateNewOrder = async function(req, res) {
     fields: permittedParams
   })
 
-  res.json({ message: 'Created new Order'})
+  res.json({ message: 'Created new OrderProduct'})
 }
 
 module.exports = [
@@ -37,5 +37,5 @@ module.exports = [
   authenticateCurrentUserByToken,
   validation,
   checkValidation,
-  apiCreateNewOrder
+  apiCreateNewOrderProduct
 ]
