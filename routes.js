@@ -22,9 +22,9 @@ router.get('/api/products/:id', require('./controllers/api/products/show'))
 // router.get('/api/my/orders/:id', require('./controllers/api/my/orders/show'))
 // router.put('/api/my/orders/:id/pay', require('./controllers/api/my/orders/pay'))
 
-// // Cart item - adding items to cart
+// Cart item - adding items to cart
 // router.get('/api/my/cart', require('./controllers/api/my/cart'))
-// router.post('/api/my/cart', require('./controllers/api/my/cart/new'))
+router.post('/api/my/cart/new', require('./controllers/api/my/cart/new'))
 // router.put('/api/my/cart', require('./controllers/api/my/cart/update'))
 
 
