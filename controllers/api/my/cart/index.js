@@ -1,6 +1,6 @@
 const { authenticateCurrentUserByToken } = require('../../../_helpers')
 
-const { Cart } = require('../../../../models')
+const { Cart, Product } = require('../../../../models')
 
 const apiCartIndex = async function (req, res) {
   const { locals: { currentUser } } = res
@@ -11,7 +11,8 @@ const apiCartIndex = async function (req, res) {
     },
     include: [
       {
-        association: Cart.Product
+        association: Cart.Product,
+        include: Product.Images
       }
     ]
   })
