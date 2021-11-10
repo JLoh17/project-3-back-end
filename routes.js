@@ -16,16 +16,15 @@ router.get('/api/products/:id', require('./controllers/api/products/show'))
 
 // My orders - for payment
 router.get('/api/my/orders', require('./controllers/api/my/orders'))
-// router.post('/api/my/orders/new', require('./controllers/api/my/orders/new')) // not sure if need this?
-// router.put('/api/my/orders', require('./controllers/api/my/orders/update'))
+router.post('/api/my/orders', require('./controllers/api/my/orders/create'))
 router.delete('/api/my/orders/:id', require('./controllers/api/my/orders/destroy'))
-// router.get('/api/my/orders/:id', require('./controllers/api/my/orders/show'))
+router.get('/api/my/orders/:id', require('./controllers/api/my/orders/show'))
 // router.put('/api/my/orders/:id/pay', require('./controllers/api/my/orders/pay'))
 
 // Cart item - adding items to cart
-// router.get('/api/my/cart', require('./controllers/api/my/cart'))
-router.post('/api/my/cart/new', require('./controllers/api/my/cart/new'))
-// router.put('/api/my/cart', require('./controllers/api/my/cart/update'))
+router.get('/api/my/cart', require('./controllers/api/my/cart'))
+router.post('/api/my/cart', require('./controllers/api/my/cart/create'))
+// router.put('/api/my/cart/:id', require('./controllers/api/my/cart/update'))
 
 
 // // My Profile's Order History - Jon lee
