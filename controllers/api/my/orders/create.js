@@ -31,7 +31,7 @@ const apiCreateNewOrderProduct = async function(req, res) {
     return { ProductId, size, quantity }
   })
 
-  await Order.create({
+  const order = await Order.create({
     //userParams takes in the schema details of the Order table
     ...userParams,
     // takes out deliveryAddress and maps to Order.address
@@ -42,8 +42,8 @@ const apiCreateNewOrderProduct = async function(req, res) {
   }, {
     fields: permittedParams,
     include: {
-      association: Order.OrderProducts
-    }
+      association: Order.OrderProducts,
+    },
   })
 
 
@@ -52,7 +52,7 @@ const apiCreateNewOrderProduct = async function(req, res) {
   // TODO check if save as default is true. if true update currentUser with userParams
   // await currentUser.update(userParams)
 
-  res.json({ message: 'Created new OrderProduct'})
+  res.json({ order })
 }
 
 module.exports = [

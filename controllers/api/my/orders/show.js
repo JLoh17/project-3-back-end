@@ -1,4 +1,4 @@
-const { Order } = require('../../../../models')
+const { Order, OrderProduct } = require('../../../../models')
 
 const apiOrdersShow = async function (req, res) {
   const { params: { id } } = req
@@ -10,9 +10,10 @@ const apiOrdersShow = async function (req, res) {
     },
     include: [
       {
-        association: Order.OrderProducts
-      }, {
-        association: Order.Products
+        association: Order.OrderProducts,
+        include: {
+          association: OrderProduct.Product
+        }
       }
     ]
   })
