@@ -17,7 +17,7 @@ router.get('/api/products/:id', require('./controllers/api/products/show'))
 // My orders - for payment
 router.get('/api/my/orders', require('./controllers/api/my/orders'))
 router.post('/api/my/orders', require('./controllers/api/my/orders/create'))
-// router.delete('/api/my/orders/:id', require('./controllers/api/my/orders/destroy'))
+router.delete('/api/my/orders/:id', require('./controllers/api/my/orders/destroy'))
 router.get('/api/my/orders/:id', require('./controllers/api/my/orders/show'))
 // router.put('/api/my/orders/:id/pay', require('./controllers/api/my/orders/pay'))
 
@@ -34,7 +34,7 @@ router.get('/api/my/profile', require('./controllers/api/my/profile/show'))
 
 // // Admin Orders - Jon Lee
 router.get('/api/admin/orders', require('./controllers/api/admin/orders'))
-// router.put('/api/admin/orders/:id', require('./controllers/api/admin/orders/update'))
+router.put('/api/admin/orders/:id', require('./controllers/api/admin/orders/update'))
 
 
 
