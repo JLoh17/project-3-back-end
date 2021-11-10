@@ -1,5 +1,7 @@
 const { Order } = require('../../../../models')
 
+// TODO permitted params
+
 const orderUpdate = async function (req, res) {
   const { params: { id }, body } = req
 

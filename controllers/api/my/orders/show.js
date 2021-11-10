@@ -6,7 +6,7 @@ const apiOrdersShow = async function (req, res) {
 
   const orderShow = await Order.findOne({
     where: {
-      id: Number(id) || 0 ,
+      id: Number(id) || 0
     },
     include: [
       {
@@ -18,7 +18,7 @@ const apiOrdersShow = async function (req, res) {
   })
 
   if (!orderShow) {
-      return res.status(404).json({ message: `Order ID ${id} not found!` })
+    return res.status(404).json({ message: `Order ID ${id} not found!` })
   }
 
   res.status(200).json({ order: orderShow })

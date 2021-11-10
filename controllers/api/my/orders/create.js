@@ -19,7 +19,6 @@ const permittedParams = [
 //   body('subTotal').isInt().withMessage('Subtotal must be a number').notEmpty().withMessage('Subtotal is Required'),
 // ]
 
-
 const apiCreateNewOrderProduct = async function(req, res) {
   const { locals: { currentUser } } = res
   const { body: productParams } = req
@@ -43,6 +42,7 @@ const apiCreateNewOrderProduct = async function(req, res) {
   //   }
   // ]
 
+  // TODO Bug fix
   const orderProductData = cart.map(({ProductId, size, quantity}) => {
     return { ProductId, size, quantity }
   })
