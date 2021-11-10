@@ -19,8 +19,8 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
-    subTotal: {
-      type: DataTypes.DOUBLE,
+    size: {
+      type: DataTypes.INTEGER,
       allowNull: true
     }
   }, {
