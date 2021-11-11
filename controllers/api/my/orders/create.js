@@ -6,10 +6,13 @@ const { authenticateCurrentUserByToken, checkValidation } = require('../../../_h
 const multer = require('multer')
 
 const permittedParams = [
-  'OrderId',
-  'ProductId',
-  'quantity',
-  'subTotal',
+  'deliveryAddress',
+  'firstName',
+  'lastName',
+  'grandTotal',
+  'telephone',
+  'status',
+  'UserId'
 ]
 
 // const validation = [
@@ -37,7 +40,8 @@ const apiCreateNewOrderProduct = async function(req, res) {
     // takes out deliveryAddress and maps to Order.address
     deliveryAddress: userParams.address,
     // takes out status and maps the status to "Pending Payment"
-    status: 'Pending Payment',
+    status: 'Pending-Payment',
+    UserId: currentUser.id,
     OrderProducts: orderProductData
   }, {
     fields: permittedParams,
