@@ -1,5 +1,5 @@
 const { body } = require('express-validator')
-const { Cart } = require('../../../../models')
+const { Cart, Order } = require('../../../../models')
 
 
 const { authenticateCurrentUserByToken, checkValidation } = require('../../../_helpers')
@@ -21,46 +21,38 @@ const permittedParams = [
 
 const apiCreateNewOrderProduct = async function(req, res) {
   const { locals: { currentUser } } = res
-  const { body: productParams } = req
+  const { body: userParams } = req
 
-  // const cart = currentUser.getCart()
-  const cart = Cart.findAll({ where: { UserId: currentUser.id }}) // alternative writing of above line
+  // const cart = await currentUser.getCart()
+  // alternative writing of above line
+  const cart = await Cart.findAll({ where: { UserId: currentUser.id }})
 
-  // [
-  //   {
-  //     id: '',
-  //     UserId: '',
-  //     ProductId: '',
-  //     size: '',
-  //     quantity: ''
-  //   }, {
-  //     id: '',
-  //     UserId: '',
-  //     ProductId: '',
-  //     size: '',
-  //     quantity: ''
-  //   }
-  // ]
-
-  // TODO Bug fix
   const orderProductData = cart.map(({ProductId, size, quantity}) => {
     return { ProductId, size, quantity }
   })
 
-  await Order.create({
-    ...productParams,
+  const order = await Order.create({
+    //userParams takes in the schema details of the Order table
+    ...userParams,
+    // takes out deliveryAddress and maps to Order.address
+    deliveryAddress: userParams.address,
+    // takes out status and maps the status to "Pending Payment"
+    status: 'Pending Payment',
     OrderProducts: orderProductData
   }, {
-    // fields: permittedParams,
+    fields: permittedParams,
     include: {
-      association: Order.OrderProducts
-    }
+      association: Order.OrderProducts,
+    },
   })
 
-  // TODO
-  // ! await Cart.destroy({ where: { UserId: CurrentUser.id }})
 
-  res.json({ message: 'Created new OrderProduct'})
+  await Cart.destroy({ where: { UserId: currentUser.id }})
+
+  // TODO check if save as default is true. if true update currentUser with userParams
+  // await currentUser.update(userParams)
+
+  res.json({ order })
 }
 
 module.exports = [

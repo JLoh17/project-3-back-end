@@ -19,7 +19,7 @@ router.get('/api/my/orders', require('./controllers/api/my/orders'))
 router.post('/api/my/orders', require('./controllers/api/my/orders/create'))
 router.delete('/api/my/orders/:id', require('./controllers/api/my/orders/destroy'))
 router.get('/api/my/orders/:id', require('./controllers/api/my/orders/show'))
-// router.put('/api/my/orders/:id/pay', require('./controllers/api/my/orders/pay'))
+router.put('/api/my/orders/:id/pay', require('./controllers/api/my/orders/pay'))
 
 // Cart item - adding items to cart
 router.get('/api/my/cart', require('./controllers/api/my/cart'))
