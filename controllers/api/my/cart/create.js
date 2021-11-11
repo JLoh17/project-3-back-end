@@ -11,7 +11,7 @@ const permittedParams = [
 
 const validation = [
   body('ProductId').isInt().withMessage('ProductID must be a String').notEmpty().withMessage('ProductID is Required'),
-  body('size').isInt().withMessage('Size must be a number').notEmpty().withMessage('Size is Required'),
+  body('size').notEmpty().withMessage('Size is Required'),
   body('quantity').isInt().withMessage('Quantity must be a number').notEmpty().withMessage('Quantity is Required'),
 ]
 

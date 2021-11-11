@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const { Product } = require('../../../models')
+const { Product, Category } = require('../../../models')
 
 const pageProductsIndex = async function (req, res) {
   const { query } = req
@@ -25,8 +25,11 @@ const pageProductsIndex = async function (req, res) {
       [Op.iLike]: `%${q}%`
     }
   }
+  let catName = ''
   if (CategoryId > 0) {
     where.CategoryId = CategoryId
+    const category = await Category.findByPk(CategoryId)
+    catName = category.catName
   }
 
   const results = await Product.findAndCountAll({
@@ -45,7 +48,7 @@ const pageProductsIndex = async function (req, res) {
 
   return res.status(200).json({
     product: results.rows,
-    meta: { q, page, limit, offset, totalPages: Math.ceil(results.count / limit) }
+    meta: { q, page, limit, offset, totalPages: Math.ceil(results.count / limit), catName }
   })
 }
 
