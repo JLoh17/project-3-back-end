@@ -31,7 +31,7 @@ module.exports = {
       },
       telephone: {
         allowNull: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       isAdmin: {
         allowNull: false,
