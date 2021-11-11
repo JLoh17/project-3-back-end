@@ -17,7 +17,7 @@ const orderUpdate = async function (req, res) {
 
   await order.update(body)
 
-  res.status(200).json({ order: orderNew })
+  res.status(200).json({ order })
 }
 
 module.exports = [orderUpdate]

@@ -10,6 +10,7 @@ const pageOrdersIndex = async function (req, res) {
     return res.json("Unauthorized access")
   }
 
+  const q = query.q || ''
   const sort = query.sort || "createdAt"
   const page = Number(query.page) || 1
   const limit = 10
@@ -28,7 +29,12 @@ const pageOrdersIndex = async function (req, res) {
     offset,
     include: [ // use [] if on the same line
       {
-        association: Order.Products
+        association: Order.Products,
+        // where: {
+        //   name: {
+        //     [Op.iLike]: `%${q}%`
+        //   }
+        // }
       }
     ]
   })
