@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Carts', 'size', {type: Sequelize.INTEGER });
+    await queryInterface.addColumn('Carts', 'size', {type: Sequelize.STRING });
   },
 
   down: async (queryInterface, Sequelize) => {
