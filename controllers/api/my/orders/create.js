@@ -30,6 +30,7 @@ const apiCreateNewOrderProduct = async function(req, res) {
   // alternative writing of above line
   const cart = await Cart.findAll({ where: { UserId: currentUser.id }})
 
+  // duplicating cart data into a new OrderProduct
   const orderProductData = cart.map(({ProductId, size, quantity}) => {
     return { ProductId, size, quantity }
   })
@@ -49,12 +50,15 @@ const apiCreateNewOrderProduct = async function(req, res) {
       association: Order.OrderProducts,
     },
   })
+  console.log(order)
 
 
   await Cart.destroy({ where: { UserId: currentUser.id }})
 
   // TODO check if save as default is true. if true update currentUser with userParams
-  // await currentUser.update(userParams)
+  if (userParams.saveAsDefaultAddress) {
+    await currentUser.update({ address: userParams.address })
+  }
 
   res.json({ order })
 }
