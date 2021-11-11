@@ -1,28 +1,17 @@
 const { Order } = require('../../../models')
 
-module.exports = function(format) {
-  return async function (req, res, next) {
-    const { params: { id } } = req
-    const order = await Order.findOne({
-      where: { id: Number(id) || 0 },
-      // include: {
-        // association: Order.Rating
-      // },
-      // order: [['Rating', 'createdAt', 'DESC']]
-    })
+module.exports = async function (req, res, next) {
+  const { params: { id } } = req
 
-    if (!order) {
-      if (format === 'modal') {
-        return res.render('api/orders/not-found', { layout: false })
-      }
+  const order = await Order.findOne({
+    where: { id: Number(id) || 0 },
+  })
 
-      if (format === 'json') {
-        return res.status(404).json({ message: `Order of ID ${id} not found!` })
-      }
-    }
-
-    res.locals.currentOrder = order
-
-    next()
+  if (!order) {
+    return res.status(404).json({ message: `Order of ID ${id} not found!` })
   }
+
+  res.locals.currentOrder = order
+
+  next()
 }

@@ -19,6 +19,10 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: true
     },
+    subTotal: {
+      type: DataTypes.DOUBLE,
+      allowNull: true
+    },
     size: {
       type: DataTypes.STRING(255),
       allowNull: true
