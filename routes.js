@@ -25,6 +25,7 @@ router.put('/api/my/orders/:id/pay', require('./controllers/api/my/orders/pay'))
 router.get('/api/my/cart', require('./controllers/api/my/cart'))
 router.post('/api/my/cart', require('./controllers/api/my/cart/create'))
 router.put('/api/my/cart/:id', require('./controllers/api/my/cart/update'))
+router.delete('/api/my/cart/:id', require('./controllers/api/my/cart/destroy'))
 
 
 // // My Profile's Order History - Jon lee
