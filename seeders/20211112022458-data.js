@@ -14,7 +14,7 @@ module.exports = {
         productName: Faker.Commerce.productName(),
         description: Faker.Lorem.sentence(3),
         price: Faker.Number.between(100, 1000),
-        CategoryId: top.id,
+        CategoryId: top[0].id,
         Images: [
           { imageURL: Faker.LoremFlickr.image('500x500', ['shirts', 'jacket'])},
           { imageURL: Faker.LoremFlickr.image('500x500', ['shirts', 'jacket'])},
@@ -30,7 +30,7 @@ module.exports = {
         productName: Faker.Commerce.productName(),
         description: Faker.Lorem.sentence(3),
         price: Faker.Number.between(100, 1000),
-        CategoryId: shoe.id,
+        CategoryId: shoe[0].id,
         Images: [
           { imageURL: Faker.LoremFlickr.image('500x500', ['shoes'])},
           { imageURL: Faker.LoremFlickr.image('500x500', ['shoes'])},
@@ -46,7 +46,7 @@ module.exports = {
         productName: Faker.Commerce.productName(),
         description: Faker.Lorem.sentence(3),
         price: Faker.Number.between(100, 1000),
-        CategoryId: hat.id,
+        CategoryId: hat[0].id,
         Images: [
           { imageURL: Faker.LoremFlickr.image('500x500', ['hat', 'fedora'])},
           { imageURL: Faker.LoremFlickr.image('500x500', ['hat', 'fedora'])},
