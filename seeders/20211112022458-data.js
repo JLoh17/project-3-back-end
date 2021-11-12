@@ -16,9 +16,9 @@ module.exports = {
         price: Faker.Number.between(100, 1000),
         CategoryId: top[0].id,
         Images: [
-          { imageURL: Faker.LoremFlickr.image('500x500', ['shirts', 'jacket'])},
-          { imageURL: Faker.LoremFlickr.image('500x500', ['shirts', 'jacket'])},
-          { imageURL: Faker.LoremFlickr.image('500x500', ['shirts', 'jacket'])}
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['shirts', 'jacket'])},
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['shirts', 'jacket'])},
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['shirts', 'jacket'])}
         ]
       }, {
         include: Product.Images
@@ -32,9 +32,9 @@ module.exports = {
         price: Faker.Number.between(100, 1000),
         CategoryId: shoe[0].id,
         Images: [
-          { imageURL: Faker.LoremFlickr.image('500x500', ['shoes'])},
-          { imageURL: Faker.LoremFlickr.image('500x500', ['shoes'])},
-          { imageURL: Faker.LoremFlickr.image('500x500', ['shoes'])}
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['shoes'])},
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['shoes'])},
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['shoes'])}
         ]
       }, {
         include: Product.Images
@@ -48,9 +48,9 @@ module.exports = {
         price: Faker.Number.between(100, 1000),
         CategoryId: hat[0].id,
         Images: [
-          { imageURL: Faker.LoremFlickr.image('500x500', ['hat', 'fedora'])},
-          { imageURL: Faker.LoremFlickr.image('500x500', ['hat', 'fedora'])},
-          { imageURL: Faker.LoremFlickr.image('500x500', ['hat', 'fedora'])}
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['hat', 'fedora'])},
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['hat', 'fedora'])},
+          { imageURL: Faker.LoremFlickr.image(`${Faker.Number.between(450, 550)}x${Faker.Number.between(450, 550)}`, ['hat', 'fedora'])}
         ]
       }, {
         include: Product.Images
